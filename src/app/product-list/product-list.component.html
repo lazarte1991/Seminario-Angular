@@ -6,15 +6,17 @@
             <th scope="col">Color</th>
             <th scope="col">Talle</th>
             <th scope="col">Stock</th>
+            <th scope="col">Precio</th>
         </tr>
     </thead>
     <tbody>
-        <tr>
+        <tr *ngFor="let product of products" [ngClass]="{'oferta': product.oferta}">
             <td><img [src]="product.imagen" [alt]="product.producto"></td>
             <td>{{product.producto}}</td>
             <td>{{product.color}}</td>
             <td>{{product.talle}}</td>
-            <td>{{product.stock}}</td>
+            <td><span class="badge badge-danger" *ngIf="product.stock==0">SIN STOCK</span></td>
+            <td>{{product.precio | currency}}</td>
         </tr>
 
     </tbody>
