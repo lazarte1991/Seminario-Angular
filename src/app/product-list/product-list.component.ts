@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductCartService } from '../product-cart.service';
+import { ProductDataService } from '../product-data.service';
 import { Product } from './Product';
 
 @Component({
@@ -8,59 +10,26 @@ import { Product } from './Product';
 })
 export class ProductListComponent implements OnInit {
 
-  products: Product[] =[
-    {
-      "imagen" : "assets/img/pantalon_gris.jpeg",
-      "producto" : "Pantalon",
-      "color" : "Gris",
-      "talle" : "M",
-      "stock" : 5,
-      "precio" : 1550,
-      "oferta" : true,
-    },
-    {
-      "imagen" : "assets/img/pantalon_gris.jpeg",
-      "producto" : "Remera",
-      "color" : "Azul",
-      "talle" : "S",
-      "stock" : 4,
-      "precio" : 800,
-      "oferta" : true,
-    },
-    {
-      "imagen" : "assets/img/pantalon_gris.jpeg",
-      "producto" : "Camisa",
-      "color" : "Rojo",
-      "talle" : "M",
-      "stock" : 9,
-      "precio" : 2100,
-      "oferta" : false,
-    },
-    {
-      "imagen" : "assets/img/pantalon_gris.jpeg",
-      "producto" : "Buzo",
-      "color" : "Amarillo",
-      "talle" : "L",
-      "stock" : 0,
-      "precio" : 1550,
-      "oferta" : false,
-    },
-    {
-      "imagen" : "assets/img/pantalon_gris.jpeg",
-      "producto" : "Remera",
-      "color" : "Blanco",
-      "talle" : "M",
-      "stock" : 7,
-      "precio" : 980,
-      "oferta" : true,
-    },
-    
+  products: Product[] = [];
 
-  ] ;
-
-  constructor() { }
+  constructor(
+    private cart: ProductCartService,
+    private productsDataService: ProductDataService) { 
+ 
+  }
 
   ngOnInit(): void {
+    this.productsDataService.getAll()
+      .subscribe(products => this.products = products);
   }
+
+  addToCart(product): void{
+    this.cart.addToCart(product);
+    product.stock -= product.cantidad;
+    product.cantidad = 0;
+  }
+
+
+
 
 }

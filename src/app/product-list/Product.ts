@@ -7,5 +7,6 @@ export interface Product {
     talle: string;
     stock: number;
     precio: number;
+    cantidad: number;
     oferta: boolean;
 }

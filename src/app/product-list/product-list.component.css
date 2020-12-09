@@ -6,3 +6,7 @@ img {
 .oferta {
     background-color: green;
 }
+
+td {
+    vertical-align: middle;
+}

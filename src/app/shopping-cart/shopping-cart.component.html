@@ -1,21 +1,6 @@
-<table class="table table-striped table-dark">
-    <thead>
-        <tr>
-            <th scope="col">Imagen</th>
-            <th scope="col">Producto</th>
-            <th scope="col">Color</th>
-            <th scope="col">Talle</th>
-            <th scope="col">Cantidad</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><img [src]="cart.imagen" [alt]="cart.producto"></td>
-            <td>{{cart.producto}}</td>
-            <td>{{cart.color}}</td>
-            <td>{{cart.talle}}</td>
-            <td>{{cart.cantidad}}</td>
-        </tr>
+<ul>
+    <li *ngFor="let product of (cartList$ | async)">
+        {{product.producto}}: {{product.cantidad}}
 
-    </tbody>
-</table>
+    </li>
+</ul>
