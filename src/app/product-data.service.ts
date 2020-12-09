@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { Product } from './product-list/Product';
 import { tap } from 'rxjs/operators';
 
-const URL = '';
+const URL = 'https://5fd0e397b485ea0016eed98b.mockapi.io/products';
 
 @Injectable({
   providedIn: 'root'

@@ -1,6 +1,10 @@
-<ul>
-    <li *ngFor="let product of (cartList$ | async)">
-        {{product.producto}}: {{product.cantidad}}
-
-    </li>
-</ul>
+<div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
+    <div class="card-header">Carrito de compras</div>
+    <div class="card-body">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item" *ngFor="let product of (cartList$ | async)">
+                <img [src]="product.imagen" [alt]="product.producto"> {{product.producto}}: {{product.cantidad}}
+            </li>
+        </ul>
+    </div>
+</div>
